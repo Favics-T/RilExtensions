@@ -5,7 +5,7 @@ import Nav from './component/Nav'
 
 const App = () => {
   return (
-    <div className='bg-[#021526] h-screen gap-8 text-white  flex flex-col justify-center items-center'>
+    <div className='bg-[#01071b] h-screen gap-8 text-white  flex flex-col justify-center items-center'>
     <Nav />
     <ExtentionCard />
     </div>
