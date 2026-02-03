@@ -2,20 +2,28 @@ import React from 'react'
 import Button from './Button'
 
 const buttonList = [
-    {title:"All"},
-    {title:"Active"},
-    {title:"Inactive"}
+    {   title:"All",
+         value: 'all'
+    },
+    {
+        title:"Active",
+        value:'active'
+    },
+    {
+        title:"Inactive",
+        value: 'inactive'
+    }
 ]
 
-const ExtensionNav = () => {
+const ExtensionNav = ({filter, setFilter}) => {
   return (
     <div>
-      <div className='flex justify-between items-center'>
+      <div className='flex md:flex-row md:justify-between items-center'>
         <h1 className='text-white font-bold text-2xl'>Extension List</h1>
 
         <div className='flex gap-4'>
-         {  buttonList.map(({title})=>(
-            <Button title={title} />
+         {  buttonList.map(({title,value})=>(
+            <Button key={value} title={title} isActive={filter === value} onClick={()=>setFilter(value)} />
          ))}
         </div>
       </div>

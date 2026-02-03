@@ -18,7 +18,7 @@ const CardComponent = ({title, description,img,isActive}) => {
 
         {/* button and toggle  */}
         <div className='flex justify-between items-center'>
-            <button className='text-sm border px-2 rounded-2xl'>Remove</button>
+            <button className='text-[12px] border px-4 py-1 rounded-2xl'>Remove</button>
             <button className={`text-2xl ${isActive ? 'text-gray-600' : 'text-red-500'}`}>
                  {
                 isActive ? <LiaToggleOnSolid />  :<CgToggleOn />

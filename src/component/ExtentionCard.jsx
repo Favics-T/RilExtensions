@@ -2,13 +2,13 @@ import React from 'react'
 import CardComponent from './CardComponent'
 import { extensionList } from '../page'
 
-const ExtentionCard = () => {
+const ExtentionCard = ({extensions}) => {
   return (
     <div>
-      <div className='grid grid-cols-3 gap-8 w-250'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-8 w-250'>
         {
-            extensionList.map(({name,logo,description,isActive})=>(
-             <CardComponent title={name} img={logo} isActive={isActive} description={description} />
+            extensions.map((ext)=>(
+             <CardComponent key={ext.name} title={ext.name} img={ext.logo} isActive={ext.isActive} description={ext.description} />
                 
             ))
         }
@@ -18,3 +18,4 @@ const ExtentionCard = () => {
 }
 
 export default ExtentionCard
+
