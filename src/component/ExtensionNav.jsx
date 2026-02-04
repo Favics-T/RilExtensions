@@ -18,10 +18,12 @@ const buttonList = [
 const ExtensionNav = ({filter, setFilter}) => {
   return (
     <div>
-      <div className='flex md:flex-row md:justify-between items-center'>
+      <div className='flex md:flex-row flex-col md:gap-0 gap-2  
+      
+      justify-between items-center'>
         <h1 className='text-white font-bold text-2xl'>Extension List</h1>
 
-        <div className='flex gap-4'>
+        <div className='flex gap-1 md:gap-4'>
          {  buttonList.map(({title,value})=>(
             <Button key={value} title={title} isActive={filter === value} onClick={()=>setFilter(value)} />
          ))}
