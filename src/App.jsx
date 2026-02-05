@@ -24,12 +24,18 @@ const App = () => {
 
  }
 
+ const handleRemoveExtension = (name)=>{
+  setExtensions(prev=> prev.filter(ext=> ext.name !== name)
+
+  )
+ }
+
   return (
     <div className='bg-[#01071b]  text-white py-8 md:px-1 px-4  flex flex-col  justify-center items-center'>
     <div className='flex flex-col gap-4 md:gap-8'>
             <Nav />
     <ExtensionNav filter={filter} setFilter={setFilter} />
-    <ExtentionCard onToggle={(name)=>handleToggle(name)} extensions={filteredExtension} />
+    <ExtentionCard onRemove={handleRemoveExtension} onToggle={handleToggle} extensions={filteredExtension} />
     
     </div>
     
