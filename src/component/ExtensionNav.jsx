@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from './Button'
+import { ExtensionContext } from '../ExtensionContext'
 
 const buttonList = [
     {   title:"All",
@@ -15,8 +16,8 @@ const buttonList = [
     }
 ]
 
-const ExtensionNav = ({filter, setFilter}) => {
-
+const ExtensionNav = () => {
+const{filter, setFilter} = useContext(ExtensionContext)
   return (
     <div>
       <div className='flex md:flex-row flex-col md:gap-0 gap-2      
@@ -27,6 +28,7 @@ const ExtensionNav = ({filter, setFilter}) => {
          {  buttonList.map(({title,value})=>(
             <Button key={value} title={title} isActiveButton={filter === value} onClick={()=>setFilter(value)} />
          ))}
+
         </div>
       </div>
     </div>
