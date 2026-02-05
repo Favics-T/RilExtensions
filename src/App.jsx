@@ -8,9 +8,7 @@ import RemovedExtensions from './component/RemovedExtension'
 
 
 const App = () => {
-       
-
-    const {filter, setFilter,filteredExtension,extensions,setExtensions,handleToggle,handleRemoveExtension } = useContext(ExtensionContext)
+    
 
   return (
     <div className='bg-[#01071b]  text-white py-8 md:px-1 px-4  flex flex-col  justify-center items-center'>

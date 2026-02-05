@@ -4,9 +4,15 @@ export const ExtensionContext = createContext();
 
 const ExtensionProvider = ({children }) => {
     const [filter, setFilter] = useState('all');
-    const [extensions, setExtensions] = useState(extensionList);
+    const [extensions, setExtensions] = useState(
+        extensionList.map((ext,idx)=>
+        ({...ext, originalIndex:idx })));
+
+    const [toast, setToast] = useState(null);
     const [removedExtensions, setRemovedExtensions ] = useState([]);
-        const filteredExtension =  
+      
+    
+    const filteredExtension =  
             extensions.filter(ext=>{    
                     if(filter === 'active') return ext.isActive;
                     if(filter === 'inactive') return !ext.isActive;
@@ -22,8 +28,14 @@ const ExtensionProvider = ({children }) => {
             const handleRemoveExtension = (name)=>{
                      setExtensions( prev=>{
                             const removed = prev.find(ext=> ext.name == name);
-                           if(removed) setRemovedExtensions(e=>[...e, removed])
-                     return        prev.filter(ext=> ext.name !== name);
+                           if(removed)
+                            {
+                                 setRemovedExtensions(e=>[...e, removed])
+                                 setToast({name,message:`${removed.name} removed`, action:"undo"})
+
+                     return        prev.filter(ext=> ext.name !== name)
+                            }
+                            setTimeout(5000,setToast)
             })}  
             
             const restoreExtension =(name)=>{
@@ -31,7 +43,7 @@ const ExtensionProvider = ({children }) => {
                         prev=>{
                           const restored =  prev.find(e=> e.name == name);
                           if(restored){
-                            setExtensions(e=> [...e, restored]);
+                            setExtensions(e=> [...e, restored].sort((a,b)=> a.originalIndex - b.originalIndex));
                            return prev.filter(p=> p.name !== name)
                           }
                           return prev
@@ -55,7 +67,9 @@ const ExtensionProvider = ({children }) => {
                                             handleRemoveExtension ,
                                             removedExtensions, 
                                             setRemovedExtensions, 
-                                            restoreExtension
+                                            restoreExtension,
+                                            toast,
+                                            setToast
                                          }}>
         {children}
       </ExtensionContext.Provider>
