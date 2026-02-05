@@ -5,7 +5,7 @@ import { CgToggleOn } from "react-icons/cg";
 const CardComponent = ({title, description,img,isActive,onToggle}) => {
   return (
     <div>
-      <div className='bg-gray-900 w-full flex flex-col gap-8 p-4 rounded-2xl'>
+      <div className='bg-gray-900 w-full flex flex-col gap-8 p-4 h-44 rounded-2xl'>
               {/* name */}
         <div className='flex gap-2  '>
            <img src={img} alt="" className='h-10
