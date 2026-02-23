@@ -27,21 +27,20 @@ const ExtensionProvider = ({children }) => {
 
             const handleRemoveExtension = (name)=>{
                      setExtensions( prev=>{
-                            const removed = prev.find(ext=> ext.name == name);
-                           if(removed)
-                            {
+                            const removed = prev.find(ext=> ext.name === name);
+                           if(removed){                            
                                  setRemovedExtensions(e=>[...e, removed])
                                  setToast({name,message:`${removed.name} removed`, action:"undo"})
-
+                           }
                      return        prev.filter(ext=> ext.name !== name)
-                            }
-                            setTimeout(5000,setToast)
-            })}  
+                            })
+                            setTimeout(()=> setToast(null),5000)
+            }  
             
             const restoreExtension =(name)=>{
                     setRemovedExtensions(
                         prev=>{
-                          const restored =  prev.find(e=> e.name == name);
+                          const restored =  prev.find(e=> e.name === name);
                           if(restored){
                             setExtensions(e=> [...e, restored].sort((a,b)=> a.originalIndex - b.originalIndex));
                            return prev.filter(p=> p.name !== name)

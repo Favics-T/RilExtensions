@@ -2,7 +2,7 @@ import React from 'react'
 import { LiaToggleOnSolid } from "react-icons/lia";
 import { CgToggleOn } from "react-icons/cg";
 
-const CardComponent = ({title, description,img,isActive,onToggle,onRemove}) => {
+const CardComponent = ({title, description,img,isActive,onToggle,onRemove,toast}) => {
   return (
     <div>
       <div className='bg-gray-900 w-full flex flex-col gap-8 p-4 h-44 rounded-2xl'>
@@ -24,9 +24,10 @@ const CardComponent = ({title, description,img,isActive,onToggle,onRemove}) => {
                 isActive ? <LiaToggleOnSolid />  :<CgToggleOn />
             }
             </button>
-           
+                      
         </div>
       </div>
+      <p>{toast}</p>
     </div>
   )
 }
